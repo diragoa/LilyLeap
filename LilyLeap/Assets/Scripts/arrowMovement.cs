@@ -42,18 +42,18 @@ public class arrowMovement : MonoBehaviour
 				{
 				case TouchPhase.Began:
 					moveArrow = false;
-					arrowPower.value = 10;
+					arrowPower.value = 50;
 
 					break;
 
 				//while holding your finger in placw the value of the slider will increase
 				case TouchPhase.Stationary:
-					arrowPower.value+=5;
+					arrowPower.value+=10;
 					break;
 
 				//while moving your fingerthe value of the slider will increase
 				case TouchPhase.Moved:
-					arrowPower.value+=5;
+					arrowPower.value+=10;
 					break;
 
 				//releasing will set jump power equal to the value
