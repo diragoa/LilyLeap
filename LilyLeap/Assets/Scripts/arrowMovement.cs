@@ -8,18 +8,15 @@ public class arrowMovement : MonoBehaviour
 	public float speedOfArrow;
 	public static float jumpPower;
 
-	Vector3 tempAngle;
-
 	public Slider arrowPower;
 
 	public static bool moveArrow;
 	public static bool frogJump;
+	
+	public static Vector3 tempangle;
 
 	void Start () 
 	{
-		//setting the temp angle equal to the object's angle
-		tempAngle = gameObject.transform.localEulerAngles;
-
 		moveArrow = true;
 
 		arrowPower.value = 0;
@@ -28,6 +25,8 @@ public class arrowMovement : MonoBehaviour
 
 	void Update () 
 	{
+
+
 		if(moveArrow == true)
 		{
 			ArrowMovement();
@@ -43,17 +42,18 @@ public class arrowMovement : MonoBehaviour
 				{
 				case TouchPhase.Began:
 					moveArrow = false;
-					arrowPower.value = 1;
+					arrowPower.value = 10;
+
 					break;
 
 				//while holding your finger in placw the value of the slider will increase
 				case TouchPhase.Stationary:
-					arrowPower.value+=1;
+					arrowPower.value+=5;
 					break;
 
 				//while moving your fingerthe value of the slider will increase
 				case TouchPhase.Moved:
-					arrowPower.value+=1;
+					arrowPower.value+=5;
 					break;
 
 				//releasing will set jump power equal to the value
@@ -83,9 +83,8 @@ public class arrowMovement : MonoBehaviour
 		{
 			speedOfArrow*=-1;
 		}
-		//setting the z axis of the temp angle to the current angle and then setting the arrows angle equal to the temps
-		tempAngle.z = currentAngle;
-		gameObject.transform.localEulerAngles = tempAngle;
+		transform.rotation = Quaternion.AngleAxis(currentAngle, Vector3.forward);
+
 	}
 }
 
