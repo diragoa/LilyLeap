@@ -13,19 +13,25 @@ public enum GameState {MAIN_MENU, START, GAME, DEATH, STORE }
 
 public class GameStateManager : MonoBehaviour {
 
-	protected GameStateManager(){}
-	private static GameStateManager instance = null;
+	public static GameStateManager instance = null;
 	public GameState gameState{ get; private set;}
 
 	//Allows the getting of the gamestate variable
 	public static GameStateManager Instance {
 		get{
-			if(GameStateManager.instance == null){
-				DontDestroyOnLoad(GameStateManager.instance);
-				GameStateManager.instance = new GameStateManager();
-			}
 			return GameStateManager.instance;
 		}
+	}
+
+	void Awake()
+	{
+		if (GameStateManager.instance == null) {
+			
+			instance = this;
+		} else if (instance != this) {
+			Destroy(gameObject);
+		}
+		DontDestroyOnLoad(gameObject);
 	}
 
 	public void SetGameState(GameState state){
