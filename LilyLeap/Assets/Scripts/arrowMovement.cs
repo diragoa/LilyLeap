@@ -20,6 +20,9 @@ public class arrowMovement : MonoBehaviour
 		moveArrow = true;
 
 		arrowPower.value = 0;
+
+
+
 	}
 	
 
@@ -37,33 +40,38 @@ public class arrowMovement : MonoBehaviour
 			{
 
 				var touch = Input.GetTouch(0);
+
+				if(touch.position.y < Screen.height-150)
+				{
 				//stops the arrow and starts the slider value to one
 				switch(touch.phase)
 				{
 				case TouchPhase.Began:
 					moveArrow = false;
-					arrowPower.value = 10;
+					arrowPower.value = 0.5f;
 
 					break;
 
 				//while holding your finger in placw the value of the slider will increase
 				case TouchPhase.Stationary:
-					arrowPower.value+=5;
+					arrowPower.value+=0.5f;
 					break;
 
 				//while moving your fingerthe value of the slider will increase
 				case TouchPhase.Moved:
-					arrowPower.value+=5;
+					arrowPower.value+=0.5f;
 					break;
 
 				//releasing will set jump power equal to the value
 				case TouchPhase.Ended:
 					jumpPower = arrowPower.value;
-					//this will moved moved to frog controlls and set to true when the frog hits the lilypad
-					//moveArrow = true;
 					frogJump = true;
+						if(GameStateManager.Instance.gameState!= GameState.GAME)
+						{
+							GameStateManager.Instance.SetGameState(GameState.GAME);
+						}
 					break;
-
+					}
 				}
 			}
 		}
@@ -83,6 +91,7 @@ public class arrowMovement : MonoBehaviour
 		{
 			speedOfArrow*=-1;
 		}
+
 		transform.rotation = Quaternion.AngleAxis(currentAngle, Vector3.forward);
 
 	}

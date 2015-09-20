@@ -9,6 +9,9 @@ public class frogMovement : MonoBehaviour
 
 	public GameObject arrow;
 
+
+
+
 	void Start () 
 	{
 	
@@ -20,7 +23,7 @@ public class frogMovement : MonoBehaviour
 
 		if(arrowMovement.frogJump == true)
 		{
-			jumppowertemp+=2;
+			jumppowertemp+=0.65f;
 			Jump ();
 		}
 	}
@@ -36,13 +39,13 @@ public class frogMovement : MonoBehaviour
 			transform.Translate(Vector3.right * speed);
 
 			//moves the frog up then down
-			if(jumppowertemp > arrowMovement.jumpPower/2)
+			if(jumppowertemp > arrowMovement.jumpPower)
 			{
-				transform.Translate(Vector3.forward * 1);
+				transform.Translate(Vector3.forward * 5);
 			}
-			if(jumppowertemp < arrowMovement.jumpPower/2)
+			if(jumppowertemp < arrowMovement.jumpPower)
 			{
-				transform.Translate(Vector3.forward * -1);
+				transform.Translate(Vector3.forward * -5);
 			}
 		}
 	}
@@ -55,6 +58,11 @@ public class frogMovement : MonoBehaviour
 			arrowMovement.frogJump = false;
 			jumppowertemp = 0;
 			arrow.SetActive(true);
+		}
+
+		if(col.gameObject.tag == "Bottom")
+		{
+			arrowMovement.frogJump = false;
 		}
 	}
 }
