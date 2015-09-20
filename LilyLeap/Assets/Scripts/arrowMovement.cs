@@ -12,8 +12,10 @@ public class arrowMovement : MonoBehaviour
 
 	public static bool moveArrow;
 	public static bool frogJump;
-	
+
 	public static Vector3 tempangle;
+
+	public static bool isAtStart;
 
 	void Start () 
 	{
@@ -21,56 +23,59 @@ public class arrowMovement : MonoBehaviour
 
 		arrowPower.value = 0;
 
-
+		isAtStart = true;
 
 	}
 	
 
 	void Update () 
 	{
-
-
-		if(moveArrow == true)
+		if(GameStateManager.Instance.gameState != GameState.PAUSED)
 		{
-			ArrowMovement();
-		}
-		if(frogJump == false)
+
+			if(moveArrow == true)
 			{
-			if(Input.touchCount > 0)
-			{
-
-				var touch = Input.GetTouch(0);
-
-				if(touch.position.y < Screen.height-150)
+				ArrowMovement();
+			}
+			if(frogJump == false)
 				{
-				//stops the arrow and starts the slider value to one
-				switch(touch.phase)
-				{
-				case TouchPhase.Began:
-					moveArrow = false;
-					arrowPower.value = 0.5f;
+					if(Input.touchCount > 0)
+					{
 
-					break;
+						var touch = Input.GetTouch(0);
 
-				//while holding your finger in placw the value of the slider will increase
-				case TouchPhase.Stationary:
-					arrowPower.value+=0.5f;
-					break;
-
-				//while moving your fingerthe value of the slider will increase
-				case TouchPhase.Moved:
-					arrowPower.value+=0.5f;
-					break;
-
-				//releasing will set jump power equal to the value
-				case TouchPhase.Ended:
-					jumpPower = arrowPower.value;
-					frogJump = true;
-						if(GameStateManager.Instance.gameState!= GameState.GAME)
+						if(touch.position.y < Screen.height-150)
 						{
-							GameStateManager.Instance.SetGameState(GameState.GAME);
+						//stops the arrow and starts the slider value to one
+						switch(touch.phase)
+						{
+						case TouchPhase.Began:
+							moveArrow = false;
+							arrowPower.value = 0.5f;
+
+							break;
+
+						//while holding your finger in placw the value of the slider will increase
+						case TouchPhase.Stationary:
+							arrowPower.value+=0.5f;
+							break;
+
+						//while moving your fingerthe value of the slider will increase
+						case TouchPhase.Moved:
+							arrowPower.value+=0.5f;
+							break;
+
+						//releasing will set jump power equal to the value
+						case TouchPhase.Ended:
+							jumpPower = arrowPower.value;
+							frogJump = true;
+								if(GameStateManager.Instance.gameState== GameState.START)
+								{
+									GameStateManager.Instance.SetGameState(GameState.GAME);
+									isAtStart = false;
+								}
+							break;
 						}
-					break;
 					}
 				}
 			}
@@ -80,19 +85,23 @@ public class arrowMovement : MonoBehaviour
 
 	void ArrowMovement()
 	{
-		//increating the angle by the speed variable
-		currentAngle += speedOfArrow;
-		arrowPower.value = 0;
-		if(currentAngle>50)
-		{
-			speedOfArrow*=-1;
-		}
-		if(currentAngle<-50)
-		{
-			speedOfArrow*=-1;
-		}
 
-		transform.rotation = Quaternion.AngleAxis(currentAngle, Vector3.forward);
+		if(GameStateManager.Instance.gameState != GameState.PAUSED)
+		{
+		//increating the angle by the speed variable
+			currentAngle += speedOfArrow;
+			arrowPower.value = 0;
+			if(currentAngle>50)
+			{
+				speedOfArrow*=-1;
+			}
+			if(currentAngle<-50)
+			{
+				speedOfArrow*=-1;
+			}
+
+			transform.rotation = Quaternion.AngleAxis(currentAngle, Vector3.forward);
+			}
 
 	}
 }

@@ -8,23 +8,27 @@ public class frogMovement : MonoBehaviour
 	float jumppowertemp;
 
 	public GameObject arrow;
-
+	public GameObject deathScreen;
 
 
 
 	void Start () 
 	{
-	
+		deathScreen.SetActive(false);
+		jumppowertemp = 0;
+		arrow.SetActive(true);
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-
-		if(arrowMovement.frogJump == true)
+		if(GameStateManager.Instance.gameState != GameState.PAUSED)
 		{
-			jumppowertemp+=0.65f;
-			Jump ();
+			if(arrowMovement.frogJump == true)
+			{
+				jumppowertemp+=0.65f;
+				Jump ();
+			}
 		}
 	}
 
@@ -60,9 +64,11 @@ public class frogMovement : MonoBehaviour
 			arrow.SetActive(true);
 		}
 
-		if(col.gameObject.tag == "Bottom")
+		if(col.gameObject.tag == "Water")
 		{
+			deathScreen.SetActive(true);
 			arrowMovement.frogJump = false;
+			GameStateManager.Instance.SetGameState(GameState.DEATH);
 		}
 	}
 }

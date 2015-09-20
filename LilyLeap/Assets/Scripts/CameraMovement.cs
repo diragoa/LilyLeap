@@ -17,8 +17,6 @@ public class CameraMovement : MonoBehaviour {
 		if (GameStateManager.Instance.gameState == GameState.GAME) {
 			transform.Translate(0,MoveSpeed,0);
 		} 
-		if (GameStateManager.Instance.gameState == GameState.START) {
-			transform.position = new Vector3 (0,0,-975);
-		}
+
 	}
 }

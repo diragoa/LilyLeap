@@ -8,7 +8,7 @@ using System.Collections;
 
 
 
-public enum GameState {MAIN_MENU, START, GAME, DEATH, STORE }
+public enum GameState {MAIN_MENU, START, GAME, DEATH, STORE, PAUSED }
 
 
 public class GameStateManager : MonoBehaviour {
