@@ -30,7 +30,7 @@ public class arrowMovement : MonoBehaviour
 
 	void Update () 
 	{
-		if(GameStateManager.Instance.gameState != GameState.PAUSED)
+		if(GameStateManager.Instance.gameState == GameState.START ||GameStateManager.Instance.gameState == GameState.GAME)
 		{
 
 			if(moveArrow == true)
@@ -86,7 +86,7 @@ public class arrowMovement : MonoBehaviour
 	void ArrowMovement()
 	{
 
-		if(GameStateManager.Instance.gameState != GameState.PAUSED)
+		if(GameStateManager.Instance.gameState == GameState.START ||GameStateManager.Instance.gameState == GameState.GAME)
 		{
 		//increating the angle by the speed variable
 			currentAngle += speedOfArrow;

@@ -20,7 +20,7 @@ public class UIButtons : MonoBehaviour
 		arrowMovement.frogJump = false;
 		scoreDistance.score=0;
 		arrowMovement.currentAngle = 0;
-		GameStateManager.Instance.SetGameState(GameState.START);
+		GameStateManager.Instance.SetGameState(GameState.MAIN_MENU);
 		Application.LoadLevel(0);
 	}
 
@@ -43,7 +43,19 @@ public class UIButtons : MonoBehaviour
 				GameStateManager.Instance.SetGameState(GameState.GAME);
 			}
 		}
-	
+	}
 
+	public void Play()
+	{
+		GameStateManager.Instance.SetGameState(GameState.START);
+	}
+
+	public void Store()
+	{
+		GameStateManager.Instance.SetGameState(GameState.STORE);
+	}
+	public void Menu()
+	{
+		GameStateManager.Instance.SetGameState(GameState.MAIN_MENU);
 	}
 }
