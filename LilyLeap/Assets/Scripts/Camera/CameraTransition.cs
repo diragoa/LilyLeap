@@ -33,6 +33,11 @@ public class CameraTransition : MonoBehaviour {
 			{
 				transform.position = Vector3.Lerp(transform.position,GameMarker.position,Speed);
 				transform.position = new Vector3(transform.position.x,transform.position.y,-975);
+				if(transform.position.x < 1)
+				{
+					arrowMovement.stopJumpTillCamStops = true;
+				}
+				
 			}
 
 		} else if (GameStateManager.Instance.gameState == GameState.STORE) 

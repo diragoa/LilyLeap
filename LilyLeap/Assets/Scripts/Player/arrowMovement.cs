@@ -17,6 +17,10 @@ public class arrowMovement : MonoBehaviour
 
 	public static bool isAtStart;
 
+	public static bool stopJumpTillCamStops;
+
+
+
 	void Start () 
 	{
 		moveArrow = true;
@@ -25,18 +29,23 @@ public class arrowMovement : MonoBehaviour
 
 		isAtStart = true;
 
+		stopJumpTillCamStops = false;
+
 	}
 	
 
 	void Update () 
 	{
+		if(moveArrow == true)
+		{
+			ArrowMovement();
+		}
+		if(stopJumpTillCamStops == true)
+		{
 		if(GameStateManager.Instance.gameState == GameState.START ||GameStateManager.Instance.gameState == GameState.GAME)
 		{
 
-			if(moveArrow == true)
-			{
-				ArrowMovement();
-			}
+			
 			if(frogJump == false)
 				{
 					if(Input.touchCount > 0)
@@ -80,7 +89,7 @@ public class arrowMovement : MonoBehaviour
 				}
 			}
 		}
-
+	}
 	}
 
 	void ArrowMovement()
