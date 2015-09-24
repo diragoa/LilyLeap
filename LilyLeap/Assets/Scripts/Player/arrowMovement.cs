@@ -20,7 +20,8 @@ public class arrowMovement : MonoBehaviour
 	public static bool stopJumpTillCamStops;
 
 
-
+	/// <summary>
+	/// Sstarts the arrow off at zero and allows it to move but doesnt let the frog jump till the camera stops moving	/// </summary>
 	void Start () 
 	{
 		moveArrow = true;
@@ -32,7 +33,10 @@ public class arrowMovement : MonoBehaviour
 		stopJumpTillCamStops = false;
 
 	}
-	
+	/// <summary>
+	/// Uarrow will always move, touch will not work untill the camera hits a certain point then on press the arrow stops and the lomnger you hold the more power your jump will have
+	/// realeasing moves the frog
+	/// </summary>
 
 	void Update () 
 	{

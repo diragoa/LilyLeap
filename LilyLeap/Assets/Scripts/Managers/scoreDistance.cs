@@ -14,7 +14,9 @@ public class scoreDistance : MonoBehaviour {
 		
 		Application.targetFrameRate = 60;
 	}
-
+	/// <summary>
+	/// Making the initial score text with the current score
+	/// </summary>
 	void Start () 
 	{
 		txt = gameObject.GetComponent<Text>();
@@ -22,7 +24,9 @@ public class scoreDistance : MonoBehaviour {
 
 	}
 	
-	// Update is called once per frame
+/// <summary>
+/// Updating the score 
+/// </summary>
 	void Update () 
 	{
 		if(GameStateManager.Instance.gameState== GameState.GAME)

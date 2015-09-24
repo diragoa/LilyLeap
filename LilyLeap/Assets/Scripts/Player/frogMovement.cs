@@ -3,7 +3,6 @@ using System.Collections;
 
 public class frogMovement : MonoBehaviour 
 {
-	Vector3 temp;
 	public float speed;
 	float jumppowertemp;
 
@@ -11,7 +10,9 @@ public class frogMovement : MonoBehaviour
 	public GameObject deathScreen;
 
 
-
+	/// <summary>
+	/// Smaking sure the death screen is not showing, starting the jump power back to zero and making the arrow roate
+	/// </summary>
 	void Start () 
 	{
 		deathScreen.SetActive(false);
@@ -19,7 +20,9 @@ public class frogMovement : MonoBehaviour
 		arrow.SetActive(true);
 	}
 	
-	// Update is called once per frame
+/// <summary>
+/// Uif the game isnt pause, set the jump power to a small number and call the jump function
+	/// </summary>
 	void Update () 
 	{
 		if(GameStateManager.Instance.gameState != GameState.PAUSED)
@@ -31,7 +34,9 @@ public class frogMovement : MonoBehaviour
 			}
 		}
 	}
-
+	/// <summary>
+	/// roatates the frog in the direction of the arrow and jumps 
+	/// </summary>
 	void Jump()
 	{
 		if(arrowMovement.frogJump == true)
@@ -53,6 +58,9 @@ public class frogMovement : MonoBehaviour
 			}
 		}
 	}
+	/// <summary>
+	/// 	If the frog hits the lilypad bring the arrow back and allow the frog to jump again, if the frog hits the water then show the death screen and change the sate to death
+	/// </summary>
 
 	void OnCollisionEnter(Collision col)
 	{

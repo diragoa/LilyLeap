@@ -13,7 +13,9 @@ public class UIButtons : MonoBehaviour
 	void Update () {
 	
 	}
-
+	/// <summary>
+	/// Reloads the level setting the arrow movement true, frog cant jump, score back to zero, and the arrow set to 0 rotation. changes the state to the game menu
+	/// </summary>
 	public void Reset()
 	{	
 		arrowMovement.moveArrow = true;
@@ -23,7 +25,9 @@ public class UIButtons : MonoBehaviour
 		GameStateManager.Instance.SetGameState(GameState.MAIN_MENU);
 		Application.LoadLevel(0);
 	}
-
+	/// <summary>
+	/// if the game isnt pause, pause it, if it is pasued check if its in the start state or the game state and contie the game from that state
+	/// </summary>
 	public void Pause()
 	{
 		if(GameStateManager.Instance.gameState != GameState.PAUSED)
