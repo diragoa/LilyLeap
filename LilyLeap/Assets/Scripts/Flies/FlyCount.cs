@@ -6,7 +6,7 @@ public class FlyCount : MonoBehaviour {
 
 	public static FlyCount instance = null;
 	
-	public int Flies;
+	public static int Flies;
 	
 	// Use this for initialization
 	void Start () {

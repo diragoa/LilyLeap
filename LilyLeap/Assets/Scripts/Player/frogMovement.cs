@@ -8,7 +8,7 @@ public class frogMovement : MonoBehaviour
 
 	public GameObject arrow;
 	public GameObject deathScreen;
-
+	public GameObject pauseMenu;
 
 	/// <summary>
 	/// Smaking sure the death screen is not showing, starting the jump power back to zero and making the arrow roate
@@ -27,11 +27,18 @@ public class frogMovement : MonoBehaviour
 	{
 		if(GameStateManager.Instance.gameState != GameState.PAUSED)
 		{
+			pauseMenu.SetActive(false);
+
 			if(arrowMovement.frogJump == true)
 			{
 				jumppowertemp+=0.65f;
 				Jump ();
 			}
+		}
+
+		if(GameStateManager.Instance.gameState == GameState.PAUSED)
+		{
+			pauseMenu.SetActive(true);
 		}
 	}
 	/// <summary>
@@ -74,6 +81,7 @@ public class frogMovement : MonoBehaviour
 
 		if(col.gameObject.tag == "Water")
 		{
+			save.saver.Save();
 			deathScreen.SetActive(true);
 			arrowMovement.frogJump = false;
 			GameStateManager.Instance.SetGameState(GameState.DEATH);

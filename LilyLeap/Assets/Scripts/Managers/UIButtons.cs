@@ -5,8 +5,9 @@ public class UIButtons : MonoBehaviour
 {
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
+		save.saver.Load();
 	}
 	
 	// Update is called once per frame
@@ -35,18 +36,6 @@ public class UIButtons : MonoBehaviour
 			GameStateManager.Instance.SetGameState(GameState.PAUSED);
 		}
 
-		else if(GameStateManager.Instance.gameState == GameState.PAUSED)
-		{
-			if(arrowMovement.isAtStart == true)
-			{
-				GameStateManager.Instance.SetGameState(GameState.START);
-			}
-		
-			else
-			{
-				GameStateManager.Instance.SetGameState(GameState.GAME);
-			}
-		}
 	}
 
 	public void Play()
@@ -61,5 +50,18 @@ public class UIButtons : MonoBehaviour
 	public void Menu()
 	{
 		GameStateManager.Instance.SetGameState(GameState.MAIN_MENU);
+	}
+
+	public void Resume()
+	{
+		if(arrowMovement.isAtStart == true)
+		{
+			GameStateManager.Instance.SetGameState(GameState.START);
+		}
+		
+		else
+		{
+			GameStateManager.Instance.SetGameState(GameState.GAME);
+		}
 	}
 }

@@ -15,7 +15,7 @@ public class DisplayFlyCount : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		txt.text = "Flies: " + FlyCount.instance.Flies;
+		txt.text = "Flies: " + GetFly.Flies;
 	
 	}
 }
