@@ -1,18 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class StoreManager : MonoBehaviour {
 
-	public static GameObject[] Frogs;
+	public static StoreManager instance = null;
+
+	public  GameObject[] Frogs;
 	public static bool[] Unlocked;
+	
 
 	public static int storeIndex;
 	public static int equippedIndex;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
+
+		if (StoreManager.instance == null) {
+			
+			instance = this;
+		} else if (instance != this) {
+			Destroy(gameObject);
+		}
+		Unlocked = new bool[Frogs.Length];
 		storeIndex = 0;
 		equippedIndex = 0;
+		Unlocked[0] = true;
+		for(int i = 1; i<Unlocked.Length; i++)
+		{
+			Unlocked[i] = false;
+		}
+
 		Frogs[storeIndex].SetActive(true);
 
 	
@@ -22,7 +40,7 @@ public class StoreManager : MonoBehaviour {
 	void Update () {
 		
 	}
-	static void FrogChange(int change)
+	void FrogChange(int change)
 	{
 		int tempIndex;
 		tempIndex = storeIndex;
@@ -42,7 +60,7 @@ public class StoreManager : MonoBehaviour {
 
 	}
 
-	public static void StoreChange(int change)
+	public void StoreChange(int change)
 	{
 		storeIndex += change;
 		if(storeIndex == -1)

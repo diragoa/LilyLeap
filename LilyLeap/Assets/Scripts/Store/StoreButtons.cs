@@ -27,7 +27,7 @@ public class StoreButtons : MonoBehaviour {
 
 		if(buy == true)
 		{
-			buyText.text = buyPrice + "flies";
+			buyText.text = buyPrice + " flies";
 		}
 	
 	}
@@ -36,11 +36,11 @@ public class StoreButtons : MonoBehaviour {
 	{
 		if(leftArrow == true)
 		{
-			StoreManager.StoreChange(-1);
+			StoreManager.instance.StoreChange(-1);
 		}
 		else if (leftArrow == false)
 		{
-			StoreManager.StoreChange(1);
+			StoreManager.instance.StoreChange(1);
 		}
 	}
 	public void Buy()

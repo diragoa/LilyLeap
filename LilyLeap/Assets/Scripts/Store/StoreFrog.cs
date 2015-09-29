@@ -21,6 +21,13 @@ public class StoreFrog : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+
+		if(StoreManager.Unlocked[StoreManager.storeIndex] == true)
+		{
+			Unlocked = true;
+		}
+
+
 		if(Unlocked == false)
 		{
 			buyButton.SetActive(true);
