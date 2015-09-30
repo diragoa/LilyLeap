@@ -9,10 +9,15 @@ public class frogMovement : MonoBehaviour
 	public GameObject arrow;
 	public GameObject deathScreen;
 	public GameObject pauseMenu;
-
+	public GameObject pauseButton;
 	/// <summary>
 	/// Smaking sure the death screen is not showing, starting the jump power back to zero and making the arrow roate
 	/// </summary>
+
+	void Awake()
+	{
+		save.saver.Load();
+	}
 	void Start () 
 	{
 		deathScreen.SetActive(false);
@@ -25,6 +30,14 @@ public class frogMovement : MonoBehaviour
 	/// </summary>
 	void Update () 
 	{
+		if(GameStateManager.Instance.gameState == GameState.DEATH)
+		{
+			pauseButton.SetActive(false);
+		}
+		else
+		{
+			pauseButton.SetActive(true);
+		}
 		if(GameStateManager.Instance.gameState != GameState.PAUSED)
 		{
 			pauseMenu.SetActive(false);

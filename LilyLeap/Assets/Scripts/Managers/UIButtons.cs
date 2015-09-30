@@ -7,7 +7,7 @@ public class UIButtons : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		save.saver.Load();
+
 	}
 	
 	// Update is called once per frame

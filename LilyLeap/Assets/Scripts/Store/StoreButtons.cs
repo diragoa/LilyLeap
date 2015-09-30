@@ -47,10 +47,12 @@ public class StoreButtons : MonoBehaviour {
 	{
 		FlyCount.Flies -= buyPrice;
 		StoreManager.Unlocked [StoreManager.storeIndex] = true;
+		save.saver.Save();
 	}
 
 	public void Equip()
 	{
 		StoreManager.equippedIndex = StoreManager.storeIndex;
+		save.saver.Save();
 	}
 }

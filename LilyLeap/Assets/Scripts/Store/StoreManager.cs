@@ -10,7 +10,7 @@ public class StoreManager : MonoBehaviour {
 	public static bool[] Unlocked;
 	
 
-	public static int storeIndex;
+	public static int storeIndex = 0;
 	public static int equippedIndex;
 
 	// Use this for initialization
@@ -23,19 +23,19 @@ public class StoreManager : MonoBehaviour {
 			Destroy(gameObject);
 		}
 		Unlocked = new bool[Frogs.Length];
-		storeIndex = 0;
-		equippedIndex = 0;
+		storeIndex = equippedIndex;
 		Unlocked[0] = true;
 		for(int i = 1; i<Unlocked.Length; i++)
 		{
 			Unlocked[i] = false;
 		}
-
-		Frogs[storeIndex].SetActive(true);
-
 	
 	}
-	
+	void Start()
+	{
+		Frogs[storeIndex].SetActive(true);
+	}
+
 	// Update is called once per frame
 	void Update () {
 		

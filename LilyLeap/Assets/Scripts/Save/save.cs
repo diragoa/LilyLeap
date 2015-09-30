@@ -37,7 +37,9 @@ public class save : MonoBehaviour
 		PlayerData data = new PlayerData();
 		
 		data.Flies = GetFly.Flies;
-		
+		data.storeindex = StoreManager.storeIndex;
+		data.equippedIndex = StoreManager.equippedIndex;
+		data.Unlocked = StoreManager.Unlocked;
 		
 		bf.Serialize(file,data);
 		file.Close();
@@ -54,7 +56,9 @@ public class save : MonoBehaviour
 			file.Close ();
 			
 			GetFly.Flies = data.Flies;
-
+			StoreManager.storeIndex = data.storeindex;
+			StoreManager.equippedIndex = data.equippedIndex;
+			StoreManager.Unlocked = data.Unlocked;
 		}
 	}
 	
@@ -62,6 +66,8 @@ public class save : MonoBehaviour
 	class PlayerData
 	{
 		public int Flies;
-		
+		public int storeindex;
+		public int equippedIndex;
+		public bool[] Unlocked;
 	}
 }
