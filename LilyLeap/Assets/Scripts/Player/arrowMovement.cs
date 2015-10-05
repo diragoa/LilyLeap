@@ -40,62 +40,55 @@ public class arrowMovement : MonoBehaviour
 
 	void Update () 
 	{
-		if(moveArrow == true)
-		{
-			ArrowMovement();
+		if (moveArrow == true) {
+			ArrowMovement ();
 		}
-		if(stopJumpTillCamStops == true)
-		{
-		if(GameStateManager.Instance.gameState == GameState.START ||GameStateManager.Instance.gameState == GameState.GAME)
-		{
 
-			
-			if(frogJump == false)
+		if (stopJumpTillCamStops == true) {
+			if (GameStateManager.Instance.gameState == GameState.START || GameStateManager.Instance.gameState == GameState.GAME) 
+			{
+				if (frogJump == false) 
 				{
-					if(Input.touchCount > 0)
+					if (Input.touchCount > 0) 
 					{
-
-						var touch = Input.GetTouch(0);
-
-						if(touch.position.y < Screen.height-150)
-						{
-						//stops the arrow and starts the slider value to one
-						switch(touch.phase)
-						{
-						case TouchPhase.Began:
-							moveArrow = false;
-							arrowPower.value = 0.5f;
-
-							break;
-
-						//while holding your finger in placw the value of the slider will increase
-						case TouchPhase.Stationary:
-							arrowPower.value+=0.5f;
-							break;
-
-						//while moving your fingerthe value of the slider will increase
-						case TouchPhase.Moved:
-							arrowPower.value+=0.5f;
-							break;
-
-						//releasing will set jump power equal to the value
-						case TouchPhase.Ended:
-							jumpPower = arrowPower.value;
-							frogJump = true;
-								if(GameStateManager.Instance.gameState== GameState.START)
-								{
-									GameStateManager.Instance.SetGameState(GameState.GAME);
+	
+						var touch = Input.GetTouch (0);
+	
+						if (touch.position.y < Screen.height - 150) {
+							//stops the arrow and starts the slider value to one
+							switch (touch.phase) {
+							case TouchPhase.Began:
+								moveArrow = false;
+								arrowPower.value = 0.5f;
+	
+								break;
+	
+							//while holding your finger in placw the value of the slider will increase
+							case TouchPhase.Stationary:
+								arrowPower.value += 0.5f;
+								break;
+	
+							//while moving your fingerthe value of the slider will increase
+							case TouchPhase.Moved:
+								arrowPower.value += 0.5f;
+								break;
+	
+							//releasing will set jump power equal to the value
+							case TouchPhase.Ended:
+								jumpPower = arrowPower.value;
+								frogJump = true;
+								if (GameStateManager.Instance.gameState == GameState.START) {
+									GameStateManager.Instance.SetGameState (GameState.GAME);
 									isAtStart = false;
 								}
-							break;
+								break;
+							}
 						}
 					}
 				}
 			}
 		}
 	}
-	}
-
 	void ArrowMovement()
 	{
 

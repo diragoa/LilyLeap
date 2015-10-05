@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LilypadSpawn : MonoBehaviour {
 
@@ -16,19 +17,28 @@ public class LilypadSpawn : MonoBehaviour {
 	private int FlyCountdown;
 	private bool CountingDown = false;
 
+	public Vector3[] startingPads;
+	public bool started;
+	public static LilypadSpawn instance = null;
+
 	// Use this for initialization
 	void Start () {
+		if (LilypadSpawn.instance == null) {
+			instance = this;
+		} else if (instance != this) {
+			Destroy(gameObject);
+		}
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 
-		if (GameStateManager.Instance.gameState == GameState.GAME) {
+		if (GameStateManager.Instance.gameState == GameState.GAME) 
+		{
 		
 			CurrentTime++;
-
-
 
 			if(CountingDown == false)
 			{
@@ -52,9 +62,15 @@ public class LilypadSpawn : MonoBehaviour {
 					}
 				}
 			}
-
-
 		}
-	
+		if(GameStateManager.Instance.gameState == GameState.START && !started)
+		{
+			for (int i = 0; i<startingPads.Length;i++)
+			{
+				Destroyer.instance.padsInScene.Add((GameObject)Instantiate(LilyPad, startingPads[i],transform.rotation));
+
+			}
+			started = true;
+		}
 	}
 }

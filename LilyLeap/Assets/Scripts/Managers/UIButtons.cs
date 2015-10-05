@@ -21,10 +21,14 @@ public class UIButtons : MonoBehaviour
 	{	
 		arrowMovement.moveArrow = true;
 		arrowMovement.frogJump = false;
+		arrowMovement.stopJumpTillCamStops = false;
+		arrowMovement.isAtStart = true;
 		scoreDistance.score=0;
 		arrowMovement.currentAngle = 0;
-		GameStateManager.Instance.SetGameState(GameState.MAIN_MENU);
-		Application.LoadLevel(0);
+
+		GameStateManager.Instance.SetGameState(GameState.START);
+		CameraTransition.instance.ResetCamera();
+		LilypadSpawn.instance.started = false;
 	}
 	/// <summary>
 	/// if the game isnt pause, pause it, if it is pasued check if its in the start state or the game state and contie the game from that state
@@ -49,7 +53,20 @@ public class UIButtons : MonoBehaviour
 	}
 	public void Menu()
 	{
+		Debug.Log("MenuButton");
 		GameStateManager.Instance.SetGameState(GameState.MAIN_MENU);
+
+		arrowMovement.moveArrow = true;
+		arrowMovement.frogJump = false;
+		arrowMovement.stopJumpTillCamStops = false;
+		arrowMovement.isAtStart = true;
+		scoreDistance.score=0;
+		arrowMovement.currentAngle = 0;
+
+
+		CameraTransition.instance.ResetCamera();
+		LilypadSpawn.instance.started = false;
+	
 	}
 
 	public void Resume()
