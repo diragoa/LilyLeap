@@ -54,12 +54,12 @@ public class arrowMovement : MonoBehaviour
 	
 						var touch = Input.GetTouch (0);
 	
-						if (touch.position.y < Screen.height - 150) {
+						if (touch.position.y < Screen.height/2) {
 							//stops the arrow and starts the slider value to one
 							switch (touch.phase) {
 							case TouchPhase.Began:
 								moveArrow = false;
-								arrowPower.value = 0.5f;
+								arrowPower.value = 0f;
 	
 								break;
 	

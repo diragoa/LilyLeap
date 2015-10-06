@@ -10,7 +10,7 @@ public class frogMovement : MonoBehaviour
 	public GameObject deathScreen;
 	public GameObject pauseMenu;
 	public GameObject pauseButton;
-
+	
 	private Vector3 startPos;
 	/// <summary>
 	/// Smaking sure the death screen is not showing, starting the jump power back to zero and making the arrow roate
@@ -23,7 +23,6 @@ public class frogMovement : MonoBehaviour
 	void Start () 
 	{
 		deathScreen.SetActive(false);
-		jumppowertemp = 0;
 		arrow.SetActive(true);
 		startPos = gameObject.transform.position;
 	}
@@ -50,6 +49,10 @@ public class frogMovement : MonoBehaviour
 				jumppowertemp+=0.65f;
 				Jump ();
 			}
+			else
+			{
+				jumppowertemp = 0;
+			}
 		}
 
 		if(GameStateManager.Instance.gameState == GameState.PAUSED)
@@ -58,8 +61,18 @@ public class frogMovement : MonoBehaviour
 		}
 		if(GameStateManager.Instance.gameState == GameState.START)
 		{
+			transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
+			jumppowertemp = 0;
 			deathScreen.SetActive(false);
 			gameObject.transform.position = new Vector3 (startPos.x,startPos.y,startPos.z);
+			arrow.SetActive(true);
+		}
+		if(GameStateManager.Instance.gameState == GameState.MAIN_MENU)
+		{
+			transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
+			deathScreen.SetActive(false);
+			gameObject.transform.position = new Vector3 (startPos.x,startPos.y,startPos.z);
+			arrow.SetActive(true);
 		}
 	}
 	/// <summary>
