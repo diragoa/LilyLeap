@@ -25,16 +25,7 @@ public class Destroyer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(GameStateManager.instance.gameState == GameState.MAIN_MENU)
-		{
-	
-				while(padsInScene.Count != 0)
-				{
-					Destroy(padsInScene[0]);
-					padsInScene.RemoveAt(0);
-				}
-			}
-		}
+	}
 	
 
 	void OnTriggerEnter(Collider other)
@@ -42,6 +33,14 @@ public class Destroyer : MonoBehaviour {
 		if(other.gameObject.tag == ("Lilypad"))
 		{
 			Destroy(other.transform.parent.gameObject);
+			padsInScene.RemoveAt(0);
+		}
+	}
+	public void ResetScene()
+	{
+		while(padsInScene.Count != 0)
+		{
+			Destroy(padsInScene[0]);
 			padsInScene.RemoveAt(0);
 		}
 	}

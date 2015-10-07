@@ -19,6 +19,8 @@ public class UIButtons : MonoBehaviour
 	/// </summary>
 	public void Reset()
 	{	
+		GameStateManager.Instance.SetGameState(GameState.START);
+
 		arrowMovement.moveArrow = true;
 		arrowMovement.frogJump = false;
 		arrowMovement.stopJumpTillCamStops = false;
@@ -26,8 +28,9 @@ public class UIButtons : MonoBehaviour
 		scoreDistance.score=0;
 		arrowMovement.currentAngle = 0;
 
-		GameStateManager.Instance.SetGameState(GameState.START);
 		CameraTransition.instance.ResetCamera();
+		Destroyer.instance.ResetScene();
+
 		LilypadSpawn.instance.started = false;
 	}
 	/// <summary>
@@ -65,6 +68,8 @@ public class UIButtons : MonoBehaviour
 
 
 		CameraTransition.instance.ResetCamera();
+		Destroyer.instance.ResetScene();
+
 		LilypadSpawn.instance.started = false;
 	
 	}
