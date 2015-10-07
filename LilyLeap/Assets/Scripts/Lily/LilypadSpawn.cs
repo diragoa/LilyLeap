@@ -53,12 +53,12 @@ public class LilypadSpawn : MonoBehaviour {
 					FlyCountdown--;
 					if(FlyCountdown == 0)
 					{
-						Instantiate(LilyPadWithFly, new Vector3(Random.Range(LeftLimit, RightLimit), transform.position.y,0),transform.rotation);
+						Destroyer.instance.padsInScene.Add ((GameObject)Instantiate(LilyPadWithFly, new Vector3(Random.Range(LeftLimit, RightLimit), transform.position.y,0),transform.rotation));
 						CountingDown = false;
 					}
 					else
 					{
-						Instantiate(LilyPad, new Vector3(Random.Range(LeftLimit, RightLimit), transform.position.y,0),transform.rotation);
+						Destroyer.instance.padsInScene.Add ((GameObject)Instantiate(LilyPad, new Vector3(Random.Range(LeftLimit, RightLimit), transform.position.y,0),transform.rotation));
 					}
 				}
 			}
