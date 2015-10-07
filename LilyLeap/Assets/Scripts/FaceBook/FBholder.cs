@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -7,6 +8,9 @@ public class FBholder : MonoBehaviour
 {
 	public GameObject isLoggedIn;
 	public GameObject isNotLoggedIn;
+
+	public string get_data;
+	public string fbname;
 
 	void Awake()
 		{
@@ -65,11 +69,18 @@ public class FBholder : MonoBehaviour
 		{
 			isLoggedIn.SetActive(true);
 			isNotLoggedIn.SetActive(false);
+
+
 		}
 		else
 		{
 			isLoggedIn.SetActive(false);
 			isNotLoggedIn.SetActive(true);
 		}
+	}
+
+	public void FaceBookInvite()
+	{
+		Facebook.Unity.FB.Mobile.AppInvite(new Uri("https://fb.me/933772966712842"));
 	}
 }
