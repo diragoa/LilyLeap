@@ -36,10 +36,12 @@ public class StoreButtons : MonoBehaviour {
 	{
 		if(leftArrow == true)
 		{
+			GameAudioManager.Instance.PlayClick();
 			StoreManager.instance.StoreChange(-1);
 		}
 		else if (leftArrow == false)
 		{
+			GameAudioManager.Instance.PlayClick();
 			StoreManager.instance.StoreChange(1);
 		}
 	}

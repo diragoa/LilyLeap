@@ -62,6 +62,7 @@ public class frogMovement : MonoBehaviour
 		}
 		if(GameStateManager.Instance.gameState == GameState.START)
 		{
+			GameAudioManager.Instance.BackgroundMusicPlay();
 			transform.rotation = Quaternion.AngleAxis(90, Vector3.forward);
 			jumppowertemp = 0;
 			deathScreen.SetActive(false);

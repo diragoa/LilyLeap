@@ -15,6 +15,7 @@ public class GameStateManager : MonoBehaviour {
 
 	public static GameStateManager instance = null;
 	public GameState gameState{ get; private set;}
+	public AudioSource click;
 
 	//Allows the getting of the gamestate variable
 	public static GameStateManager Instance {

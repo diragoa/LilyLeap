@@ -3,7 +3,6 @@ using System.Collections;
 
 public class UIButtons : MonoBehaviour 
 {
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -12,13 +11,14 @@ public class UIButtons : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 	/// <summary>
 	/// Reloads the level setting the arrow movement true, frog cant jump, score back to zero, and the arrow set to 0 rotation. changes the state to the game menu
 	/// </summary>
 	public void Reset()
 	{	
+		GameAudioManager.Instance.PlayClick();
 		GameStateManager.Instance.SetGameState(GameState.START);
 
 		arrowMovement.moveArrow = true;
@@ -40,6 +40,7 @@ public class UIButtons : MonoBehaviour
 	{
 		if(GameStateManager.Instance.gameState != GameState.PAUSED)
 		{
+			GameAudioManager.Instance.PlayClick();
 			GameStateManager.Instance.SetGameState(GameState.PAUSED);
 		}
 
@@ -47,16 +48,19 @@ public class UIButtons : MonoBehaviour
 
 	public void Play()
 	{
+		GameAudioManager.Instance.PlayClick();
 		GameStateManager.Instance.SetGameState(GameState.START);
 	}
 
 	public void Store()
 	{
+		GameAudioManager.Instance.PlayClick();
 		GameStateManager.Instance.SetGameState(GameState.STORE);
 	}
 	public void Menu()
 	{
 		Debug.Log("MenuButton");
+		GameAudioManager.Instance.PlayClick();
 		GameStateManager.Instance.SetGameState(GameState.MAIN_MENU);
 
 		arrowMovement.moveArrow = true;
@@ -78,11 +82,13 @@ public class UIButtons : MonoBehaviour
 	{
 		if(arrowMovement.isAtStart == true)
 		{
+			GameAudioManager.Instance.PlayClick();
 			GameStateManager.Instance.SetGameState(GameState.START);
 		}
 		
 		else
 		{
+			GameAudioManager.Instance.PlayClick();
 			GameStateManager.Instance.SetGameState(GameState.GAME);
 		}
 	}
