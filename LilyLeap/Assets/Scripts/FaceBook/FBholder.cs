@@ -9,8 +9,8 @@ public class FBholder : MonoBehaviour
 	public GameObject isLoggedIn;
 	public GameObject isNotLoggedIn;
 
-	public string get_data;
-	public string fbname;
+	private const string FACEBOOK_APP_ID = "933772966712842";
+	private const string FACEBOOK_URL = "http://www.facebook.com/dialog/feed";
 
 	void Awake()
 		{
@@ -83,4 +83,27 @@ public class FBholder : MonoBehaviour
 	{
 		Facebook.Unity.FB.Mobile.AppInvite(new Uri("https://fb.me/933772966712842"));
 	}
+
+	public void FaceBookShare(string linkParameter, string nameParameter, string captionParameter, string descriptionParameter, /*string pictureParameter,*/ string redirectParameter)
+	{
+
+
+		Application.OpenURL (FACEBOOK_URL + "?app_id=" + FACEBOOK_APP_ID +
+		                     "&link=" + WWW.EscapeURL(linkParameter) +
+		                     "&name=" + WWW.EscapeURL(nameParameter) +
+		                     "&caption=" + WWW.EscapeURL(captionParameter) + 
+		                     "&description=" + WWW.EscapeURL(descriptionParameter) + 
+		                    // "&picture=" + WWW.EscapeURL(pictureParameter) + 
+		                     "&redirect_uri=" + WWW.EscapeURL(redirectParameter));
+	}
+	public void FaceBookShareButton()
+	{
+		FaceBookShare("https://www.facebook.com/lilyleap?fref=nf",
+		              "Come check out LilyLeap!",
+		              "I just went " + scoreDistance.score + "!",
+		             	"Think you can beat my score?" ,
+		              //"&picture=" + WWW.EscapeURL(pictureParameter) + ,
+		              " http://www.facebook.com/");
+	}
+
 }
