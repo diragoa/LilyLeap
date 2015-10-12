@@ -98,12 +98,12 @@ public class FBholder : MonoBehaviour
 	}
 	public void FaceBookShareButton()
 	{
-		FaceBookShare("https://www.facebook.com/lilyleap?fref=nf",
+		FaceBookShare("https://fb.me/www.facebook.com/lilyleap?fref=nf",
 		              "Come check out LilyLeap!",
 		              "I just went " + scoreDistance.score + "!",
 		             	"Think you can beat my score?" ,
 		              //"&picture=" + WWW.EscapeURL(pictureParameter) + ,
-		              " http://www.facebook.com/");
+		              "https://www.facebook.com/");
 	}
 
 }
