@@ -46,7 +46,7 @@ public class FBholder : MonoBehaviour
 
 	public void FBLogIn()
 	{
-		Facebook.Unity.FB.LogInWithReadPermissions (new List<string>(){ "email"},AuthCallback);
+		Facebook.Unity.FB.LogInWithReadPermissions (new List<string>(){ "email","public_profile"," user_friends"},AuthCallback);
 	}
 
 	void AuthCallback(Facebook.Unity.IResult result)
@@ -98,9 +98,9 @@ public class FBholder : MonoBehaviour
 	}
 	public void FaceBookShareButton()
 	{
-		FaceBookShare("https://fb.me/www.facebook.com/lilyleap?fref=nf",
-		              "Come check out LilyLeap!",
+		FaceBookShare("https://www.facebook.com/lilyleap?fref=nf",
 		              "I just went " + scoreDistance.score + "!",
+		              "Come check out LilyLeap!",
 		             	"Think you can beat my score?" ,
 		              //"&picture=" + WWW.EscapeURL(pictureParameter) + ,
 		              "https://www.facebook.com/");
