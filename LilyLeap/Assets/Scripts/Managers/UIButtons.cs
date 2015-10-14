@@ -40,7 +40,7 @@ public class UIButtons : MonoBehaviour
 	{
 		if(GameStateManager.Instance.gameState != GameState.PAUSED)
 		{
-			//GameAudioManager.Instance.PlayClick();
+			GameAudioManager.Instance.PlayClick();
 			GameStateManager.Instance.SetGameState(GameState.PAUSED);
 		}
 
@@ -48,19 +48,19 @@ public class UIButtons : MonoBehaviour
 
 	public void Play()
 	{
-	//	GameAudioManager.Instance.PlayClick();
+		GameAudioManager.Instance.PlayClick();
 		GameStateManager.Instance.SetGameState(GameState.START);
 	}
 
 	public void Store()
 	{
-	//	GameAudioManager.Instance.PlayClick();
+		GameAudioManager.Instance.PlayClick();
 		GameStateManager.Instance.SetGameState(GameState.STORE);
 	}
 	public void Menu()
 	{
 		Debug.Log("MenuButton");
-	//	GameAudioManager.Instance.PlayClick();
+		GameAudioManager.Instance.PlayClick();
 		GameStateManager.Instance.SetGameState(GameState.MAIN_MENU);
 
 		arrowMovement.moveArrow = true;
@@ -82,13 +82,13 @@ public class UIButtons : MonoBehaviour
 	{
 		if(arrowMovement.isAtStart == true)
 		{
-		//	GameAudioManager.Instance.PlayClick();
+			GameAudioManager.Instance.PlayClick();
 			GameStateManager.Instance.SetGameState(GameState.START);
 		}
 		
 		else
 		{
-			//GameAudioManager.Instance.PlayClick();
+			GameAudioManager.Instance.PlayClick();
 			GameStateManager.Instance.SetGameState(GameState.GAME);
 		}
 	}

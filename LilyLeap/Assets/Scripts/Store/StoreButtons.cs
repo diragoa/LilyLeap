@@ -47,6 +47,7 @@ public class StoreButtons : MonoBehaviour {
 	}
 	public void Buy()
 	{
+		GameAudioManager.Instance.PlayClick();
 		FlyCount.Flies -= buyPrice;
 		StoreManager.Unlocked [StoreManager.storeIndex] = true;
 		save.saver.Save();
@@ -54,6 +55,7 @@ public class StoreButtons : MonoBehaviour {
 
 	public void Equip()
 	{
+		GameAudioManager.Instance.PlayClick();
 		StoreManager.equippedIndex = StoreManager.storeIndex;
 		save.saver.Save();
 	}

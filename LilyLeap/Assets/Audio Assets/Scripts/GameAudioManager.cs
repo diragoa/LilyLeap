@@ -35,16 +35,20 @@ public class GameAudioManager : MonoBehaviour {
 
 	public void PlayJump()
 	{
-		Jump.Play();
+		if(Jump.isPlaying == false)
+		{
+			Jump.Play();
+		}
 	}
 
 	public void BackgroundMusicPlay()
 	{
-		if(BackgroundMusic.isPlaying)
+		if(BackgroundMusic.isPlaying == false)
 		{
+			BackgroundMusic.Play();
 		}
-		else
-		BackgroundMusic.Play();
+
+		
 	}
 
 	public void OnApplicationQuit()

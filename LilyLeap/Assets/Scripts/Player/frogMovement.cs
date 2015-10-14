@@ -86,6 +86,7 @@ public class frogMovement : MonoBehaviour
 	{
 		if(arrowMovement.frogJump == true)
 		{
+			GameAudioManager.Instance.PlayJump();
 			arrow.SetActive(false);
 			//rotates the frog to match the arrows rotation
 			transform.rotation = Quaternion.AngleAxis(arrowMovement.currentAngle+90, Vector3.forward);
