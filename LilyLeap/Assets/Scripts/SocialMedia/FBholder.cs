@@ -84,7 +84,7 @@ public class FBholder : MonoBehaviour
 		Facebook.Unity.FB.Mobile.AppInvite(new Uri("https://fb.me/933772966712842"));
 	}
 
-	public void FaceBookShare(string linkParameter, string nameParameter, string captionParameter, string descriptionParameter, /*string pictureParameter,*/ string redirectParameter)
+	public void FaceBookShare(string linkParameter, string nameParameter, string captionParameter, string descriptionParameter, string pictureParameter,string redirectParameter)
 	{
 
 
@@ -93,17 +93,19 @@ public class FBholder : MonoBehaviour
 		                     "&name=" + WWW.EscapeURL(nameParameter) +
 		                     "&caption=" + WWW.EscapeURL(captionParameter) + 
 		                     "&description=" + WWW.EscapeURL(descriptionParameter) + 
-		                    // "&picture=" + WWW.EscapeURL(pictureParameter) + 
+		                     "&picture=" + WWW.EscapeURL(pictureParameter) + 
 		                     "&redirect_uri=" + WWW.EscapeURL(redirectParameter));
 	}
 	public void FaceBookShareButton()
 	{
-		FaceBookShare("https://www.facebook.com/lilyleap?fref=nf",
+		/*FaceBookShare("https://www.facebook.com/lilyleap?fref=nf",
 		              "I just went " + scoreDistance.score + "!",
 		              "Come check out LilyLeap!",
 		             	"Think you can beat my score?" ,
-		              //"&picture=" + WWW.EscapeURL(pictureParameter) + ,
-		              "https://www.facebook.com/");
+		              "https://www.facebook.com/lilyleap/photos/pb.451905291659975.-2207520000.1445194013./455864371264067/?type=3&theater" ,
+		              "https://www.facebook.com/");*/
+
+		Application.OpenURL("http://www.facebook.com/dialog/feed?app_id=933772966712842&link=https://www.facebook.com/lilyleap?fref=nf&name=I just went " + scoreDistance.score +"&caption=Come check out LilyLeap!&description=Think you can beat my score?&picture=https://www.facebook.com/lilyleap/photos/pb.451905291659975.-2207520000.1445194013./455864371264067/?type=3&theater&redirect_uri=https://www.facebook.com/");
 	}
 
 }
